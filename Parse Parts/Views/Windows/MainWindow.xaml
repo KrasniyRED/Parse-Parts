@@ -29,7 +29,7 @@
                             <RowDefinition Height="75"/>
                             <RowDefinition Height="75*"/>
                         </Grid.RowDefinitions>
-                        
+
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="110"/>
@@ -41,7 +41,7 @@
                             <Label Grid.Row="0" Grid.Column="1" Content="Модель"  Margin="5,10,0,0" VerticalAlignment="Top" Height="25"/>
                             <ComboBox Grid.Row="0" Grid.Column="1" Margin="5,30,5,0" Height="25" VerticalAlignment="Top"/>
                         </Grid>
-                        
+
 
                         <Label Grid.Row="1" Content="Название"  Margin="5,0,0,0" VerticalAlignment="Top" Height="25"/>
                         <ComboBox Grid.Row="1" Margin="5,30,5,0" Height="25" VerticalAlignment="Top"/>
@@ -51,11 +51,37 @@
                     </Grid>
                 </TabItem>
                 <TabItem Header="Поиск по номеру">
-                    <Grid Background="#FFE5E5E5"/>
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10*"/>
+                            <RowDefinition Height="50*"/>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0"  Content="OEM-номер детали"  Margin="5,10,0,0" VerticalAlignment="Top" Height="25"/>
+                        <TextBox Grid.Row="0" Margin="5,30,5,0" Height="25" VerticalAlignment="Top"/>
+
+                        <Button Grid.Row="1" Margin="5,5,5,0" Height="25" VerticalAlignment="Top" Content="Поиск"/>
+                    </Grid>
                 </TabItem>
             </TabControl>
             <Grid Grid.Column="1">
-
+                <Grid MaxHeight="150">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Margin="0,0,0,0" />
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Margin="5,10,5,10" Text="Title" FontSize="16" TextAlignment="Justify"></TextBlock>
+                        <TextBlock Grid.Row="1" Margin="5,10,5,10" Text="Description" FontSize="12" TextAlignment="Justify"></TextBlock>
+                    </Grid>
+                    <TextBlock Grid.Column="2" Margin="5,10,5,5" TextWrapping="Wrap" Text="Price" TextAlignment="Center" FontSize="16" FontWeight="Bold" VerticalAlignment="Top"/>
+                    
+                </Grid>
             </Grid>
 
         </Grid>
