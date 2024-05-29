@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parse_Parts"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ParseParts" Height="450" Width="800">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
@@ -17,17 +17,40 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100*" MinWidth="250"/>
+                <ColumnDefinition Width="100*" MaxWidth="250" />
                 <ColumnDefinition Width="157*"/>
             </Grid.ColumnDefinitions>
 
-            <TabControl>
-                <TabItem Header="TabItem">
+            <TabControl Grid.Column="0">
+                <TabItem Header="Поиск по автомобилю">
                     <Grid Background="#FFE5E5E5">
-                        <TextBox HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="65"/>
+                            <RowDefinition Height="75"/>
+                            <RowDefinition Height="75*"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="110"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0" Content="Марка"  Margin="5,10,0,0" VerticalAlignment="Top" Height="25"/>
+                            <ComboBox Grid.Row="0" Grid.Column="0" Margin="5,30,15,0" Height="25" VerticalAlignment="Top"/>
+
+                            <Label Grid.Row="0" Grid.Column="1" Content="Модель"  Margin="5,10,0,0" VerticalAlignment="Top" Height="25"/>
+                            <ComboBox Grid.Row="0" Grid.Column="1" Margin="5,30,5,0" Height="25" VerticalAlignment="Top"/>
+                        </Grid>
+                        
+
+                        <Label Grid.Row="1" Content="Название"  Margin="5,0,0,0" VerticalAlignment="Top" Height="25"/>
+                        <ComboBox Grid.Row="1" Margin="5,30,5,0" Height="25" VerticalAlignment="Top"/>
+
+                        <Button Grid.Row="2" Margin="5,5,5,0" Height="25" VerticalAlignment="Top" Content="Поиск"/>
+
                     </Grid>
                 </TabItem>
-                <TabItem Header="TabItem">
+                <TabItem Header="Поиск по номеру">
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>
             </TabControl>
@@ -37,5 +60,5 @@
 
         </Grid>
     </DockPanel>
-    
+
 </Window>
