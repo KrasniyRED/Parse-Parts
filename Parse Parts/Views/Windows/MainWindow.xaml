@@ -13,7 +13,7 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
-                <MenuItem Header="Выход"/>
+                <MenuItem Header="Выход" Command="{Binding CloseAppCommand}"/>
             </MenuItem>
         </Menu>
         <Grid>
