@@ -12,7 +12,7 @@ namespace Parse_Parts.Models
 
         private ImportHub()
         {
-
+            
         }
 
         public static ImportHub getInstance()
