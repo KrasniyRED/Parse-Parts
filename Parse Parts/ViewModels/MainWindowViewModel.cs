@@ -1,4 +1,5 @@
-﻿using Parse_Parts.Infrastructure.Commands;
+﻿using CommunityToolkit.Mvvm.Input;
+using Parse_Parts.Infrastructure.Commands;
 using Parse_Parts.ViewModels.Base;
 using System;
 using System.Collections.Generic;
@@ -12,8 +13,19 @@ namespace Parse_Parts.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
-        #region Close Command
+        #region SearchField
         
+        private string _SearchField;
+        public string SearchField
+        {
+            get => _SearchField;
+            set => Set(ref _SearchField,value);
+        }
+
+        #endregion
+
+        #region Close Command
+
         public ICommand CloseAppCommand {  get; }
         
         private void onCloseAppCommandExecuted(object obj)
@@ -28,6 +40,12 @@ namespace Parse_Parts.ViewModels
 
         #endregion
 
+        #region OemSearch
+
+        
+
+        #endregion
+        
         public MainWindowViewModel()
         {
             #region  Commands
