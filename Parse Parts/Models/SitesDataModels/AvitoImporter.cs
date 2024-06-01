@@ -20,7 +20,7 @@ namespace Parse_Parts.Models.SitesDataModels
             try
             {
                 HttpResponseMessage response = await client.GetAsync(
-                    "https://www.avito.ru/krasnoyarsk?cd=1&q=1530170100");
+                    "https://www.avito.ru/krasnoyarsk?cd=1&q=" + OemId);
                 response.EnsureSuccessStatusCode();
                 IConfiguration config = Configuration.Default;
                 IBrowsingContext context = BrowsingContext.New(config);
@@ -47,8 +47,12 @@ namespace Parse_Parts.Models.SitesDataModels
                             "stylesMarningNormal-module-paragraph-s-Yhr2e " +
                             "styles-module-noAccent-LowZ8 " +
                             "styles-module-root_bottom-G4JNz " +
-                            "styles-module-margin-bottom_6-_aVZm").TextContent
-                        );
+                            "styles-module-margin-bottom_6-_aVZm").TextContent,
+                        advert.QuerySelectorAll("li").First(tag =>
+                        tag.GetAttribute("data-marker").Contains("slider-image/image"))
+                            .GetAttribute("data-marker").Replace("slider-image/image-", "")
+                        )
+                        ;
                         data.Add(adv);
 
                 }

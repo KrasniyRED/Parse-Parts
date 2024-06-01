@@ -38,11 +38,14 @@ namespace Testing
                         advert.QuerySelectorAll("p").First(tag => tag.ClassName == "styles-module-root-YczkZ " +
                             "styles-module-size_s-AGMw8 styles-module-size_s_compensated-UgWYW styles-module-size_s-_z7mI " +
                             "styles-module-ellipsis-a2Uq1 stylesMarningNormal-module-root-S7NIr stylesMarningNormal-module-paragraph-s-Yhr2e " +
-                            "styles-module-noAccent-LowZ8 styles-module-root_bottom-G4JNz styles-module-margin-bottom_6-_aVZm").TextContent
+                            "styles-module-noAccent-LowZ8 styles-module-root_bottom-G4JNz styles-module-margin-bottom_6-_aVZm").TextContent,
+                        advert.QuerySelectorAll("li").First(tag =>
+                        tag.GetAttribute("data-marker").Contains("slider-image/image")).GetAttribute("data-marker").Replace("slider-image/image-", "")
                         );
-                   
+                   Console.WriteLine( adv.Photo );
                  
                 }
+                Console.ReadLine();
 
                 
                 
@@ -118,13 +121,15 @@ namespace Testing
         public string Url { get; set; }
         public string Price { get; set; }
         public string Description { get; set; }
+        public string Photo { get; set; }
 
-        public Advert(string title, string url, string price, string description)
+        public Advert(string title, string url, string price, string description, string photo = null)
         {
             Title = title;
             Url = url;
             Price = price;
             Description = description;
+            Photo = photo;
         }
     }
 
