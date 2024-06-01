@@ -10,6 +10,6 @@ namespace Parse_Parts.Infrastructure.Interfaces
 {
     internal interface ISiteImporter
     {
-        Collection<Advert> GetData();
+        Collection<Advert> GetData(string OemId);
     }
 }
