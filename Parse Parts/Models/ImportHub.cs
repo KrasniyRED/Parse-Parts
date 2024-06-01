@@ -1,5 +1,4 @@
 ﻿using Parse_Parts.Infrastructure.Interfaces;
-using System.CodeDom;
 using System.Collections.ObjectModel;
 using System.Linq;
 
@@ -11,7 +10,7 @@ namespace Parse_Parts.Models
 
         ObservableCollection<ISiteImporter> siteImporters;
 
-        private ImportHub() 
+        private ImportHub()
         {
 
         }
@@ -25,21 +24,21 @@ namespace Parse_Parts.Models
 
         public Collection<Advert> getAdverts(string searchParam)
         {
-            
+
             if (searchParam != null)
             {
                 Collection<Advert> adverts = null;
                 foreach (ISiteImporter importer in siteImporters)
                 {
                     adverts = new Collection<Advert>(adverts
-                        .Concat(importer.GetData(searchParam))
+                        .Concat(importer.GetData(searchParam).Result)
                         .ToList());
                 }
 
                 return adverts;
             }
             return null;
-            
+
         }
     }
 }

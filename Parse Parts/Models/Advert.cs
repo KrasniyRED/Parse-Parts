@@ -14,7 +14,7 @@ namespace Parse_Parts.Models
         public string Description { get; set; }
         public string Photo {  get; set; }
 
-        public Advert(string title, string url, string price, string description, string photo)
+        public Advert(string title, string url, string price, string description, string photo=null)
         {
             Title = title;
             Url = url;
