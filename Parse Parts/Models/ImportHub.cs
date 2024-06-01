@@ -1,6 +1,8 @@
 ﻿using Parse_Parts.Infrastructure.Interfaces;
+using Parse_Parts.Models.SitesDataModels;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Parse_Parts.Models
 {
@@ -12,7 +14,7 @@ namespace Parse_Parts.Models
 
         private ImportHub()
         {
-            
+            siteImporters = [new AvitoImporter()];
         }
 
         public static ImportHub getInstance()
@@ -22,7 +24,7 @@ namespace Parse_Parts.Models
             return _instance;
         }
 
-        public Collection<Advert> getAdverts(string searchParam)
+        public async Task<Collection<Advert>> getAdverts(string searchParam)
         {
 
             if (searchParam != null)
@@ -30,8 +32,9 @@ namespace Parse_Parts.Models
                 Collection<Advert> adverts = null;
                 foreach (ISiteImporter importer in siteImporters)
                 {
+                    var data = await importer.GetData(searchParam);
                     adverts = new Collection<Advert>(adverts
-                        .Concat(importer.GetData(searchParam).Result)
+                        .Concat(data)
                         .ToList());
                 }
 
