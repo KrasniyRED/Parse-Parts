@@ -14,7 +14,10 @@ namespace Parse_Parts.Models
 
         private ImportHub()
         {
-            siteImporters = [new AvitoImporter()];
+            siteImporters = [
+                new AvitoImporter(),
+                new BibinetImporter()
+            ];
         }
 
         public static ImportHub getInstance()
