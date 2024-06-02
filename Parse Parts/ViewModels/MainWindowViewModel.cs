@@ -1,5 +1,4 @@
-﻿using CommunityToolkit.Mvvm.Input;
-using Parse_Parts.Infrastructure.Commands;
+﻿using Parse_Parts.Infrastructure.Commands;
 using Parse_Parts.Infrastructure.Interfaces;
 using Parse_Parts.Models;
 using Parse_Parts.ViewModels.Base;
@@ -56,6 +55,7 @@ namespace Parse_Parts.ViewModels
 
         private bool canOemSearchCommandEcecute(object obj)
         {
+            if(_SearchField == null || _SearchField == "") return false;
             return true;
         }
 

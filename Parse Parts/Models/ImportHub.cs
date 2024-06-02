@@ -29,13 +29,14 @@ namespace Parse_Parts.Models
 
             if (searchParam != null)
             {
-                Collection<Advert> adverts = null;
+                var adverts = new Collection<Advert>();
                 foreach (ISiteImporter importer in siteImporters)
                 {
                     var data = await importer.GetData(searchParam);
-                    adverts = new Collection<Advert>(adverts
-                        .Concat(data)
-                        .ToList());
+                    foreach (var item in data)
+                    {
+                        adverts.Add(item);
+                    }
                 }
 
                 return adverts;
