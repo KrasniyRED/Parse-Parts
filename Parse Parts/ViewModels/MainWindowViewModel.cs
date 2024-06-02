@@ -4,6 +4,7 @@ using Parse_Parts.Models;
 using Parse_Parts.ViewModels.Base;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +15,15 @@ namespace Parse_Parts.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
-        IEnumerable<Advert> adverts;
+        private Collection<Advert> _Adverts;
+        public Collection<Advert> Adverts
+        {
+            get => _Adverts;
+            set => Set(ref _Adverts, value);
+        }
 
         #region SearchField
-        
+
         private string _SearchField;
         public string SearchField
         {
@@ -50,7 +56,7 @@ namespace Parse_Parts.ViewModels
         private async Task onOemSearchCommandExecuted()
         {
             var hub = ImportHub.getInstance();
-            adverts = await hub.getAdverts(_SearchField);
+            Adverts = await hub.getAdverts(_SearchField);
         }
 
         private bool canOemSearchCommandEcecute(object obj)

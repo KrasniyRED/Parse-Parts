@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:model ="clr-namespace:Parse_Parts.Models"
         xmlns:vm="clr-namespace:Parse_Parts.ViewModels"
         xmlns:local="clr-namespace:Parse_Parts"
         mc:Ignorable="d"
@@ -10,6 +11,28 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate x:Key="listItemTemplate">
+            <Grid MaxHeight="150">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="13*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Margin="0,0,0,0" />
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Margin="5,10,5,10" Text="{Binding Title}" FontSize="16" TextAlignment="Justify"></TextBlock>
+                    <TextBlock Grid.Row="1" Margin="5,10,5,10" Text="{Binding Description}" FontSize="12" TextAlignment="Justify"></TextBlock>
+                </Grid>
+                <TextBlock Grid.Column="2" Margin="5,10,5,5" TextWrapping="Wrap" Text="{Binding Price}" TextAlignment="Center" FontSize="16" FontWeight="Bold" VerticalAlignment="Top"/>
+
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
@@ -68,24 +91,31 @@
                 </TabItem>
             </TabControl>
             <Grid Grid.Column="1">
-                <Grid MaxHeight="150">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition Width="13*"/>
-                        <ColumnDefinition Width="4*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Margin="0,0,0,0" />
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition Height="2*"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Margin="5,10,5,10" Text="Title" FontSize="16" TextAlignment="Justify"></TextBlock>
-                        <TextBlock Grid.Row="1" Margin="5,10,5,10" Text="Description" FontSize="12" TextAlignment="Justify"></TextBlock>
-                    </Grid>
-                    <TextBlock Grid.Column="2" Margin="5,10,5,5" TextWrapping="Wrap" Text="Price" TextAlignment="Center" FontSize="16" FontWeight="Bold" VerticalAlignment="Top"/>
-                    
-                </Grid>
+                <ListView ItemsSource="{Binding Adverts}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate DataType="model:Advert">
+                            <Grid MaxHeight="150">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="13*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Margin="0,0,0,0" />
+                                <Grid Grid.Column="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition Height="2*"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Margin="5,10,5,10" Text="{Binding Title}" FontSize="16" TextAlignment="Justify"></TextBlock>
+                                    <TextBlock Grid.Row="1" Margin="5,10,5,10" Text="{Binding Description}" FontSize="12" TextAlignment="Justify"></TextBlock>
+                                </Grid>
+                                <TextBlock Grid.Column="2" Margin="5,10,5,5" TextWrapping="Wrap" Text="{Binding Price}" TextAlignment="Center" FontSize="16" FontWeight="Bold" VerticalAlignment="Top"/>
+
+                            </Grid>
+                        </DataTemplate>
+                       
+                    </ListView.ItemTemplate>
+                </ListView>
             </Grid>
 
         </Grid>
