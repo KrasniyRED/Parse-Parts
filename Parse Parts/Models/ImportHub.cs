@@ -38,6 +38,7 @@ namespace Parse_Parts.Models
                     var data = await importer.GetData(searchParam);
                     foreach (var item in data)
                     {
+                        item.Photo ??= "/Data/Images/placeholder.png";
                         adverts.Add(item);
                     }
                 }

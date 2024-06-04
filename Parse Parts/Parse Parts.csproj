@@ -9,7 +9,9 @@
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
+    <None Remove="Data\Images\placeholder.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -17,5 +19,8 @@
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\Images\placeholder.png" />
   </ItemGroup>
 </Project>
