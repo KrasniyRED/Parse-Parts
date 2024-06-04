@@ -28,9 +28,9 @@ namespace Parse_Parts.Models.SitesDataModels
                     data.Add(new Advert(
                         item.part_title,
                         "https://bibinet.ru/" + item.url_part,
-                        item.real_price.ToString(),
+                        item.real_price.ToString() + " ₽",
                         item.sup_part_comment,
-                        "https://bibinet.ru/" + item.photos.path
+                        "https://bibinet.ru" + item.photos.path + "-1.jpeg"
                         ));
                 }
                 return data;
