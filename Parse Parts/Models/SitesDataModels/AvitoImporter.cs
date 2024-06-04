@@ -30,14 +30,14 @@ namespace Parse_Parts.Models.SitesDataModels
                 IEnumerable<IElement> adverts = document.All.Where(
                     tag => tag.LocalName == "div" &&
                     tag.ClassName == "iva-item-content-rejJg");
+                
                 foreach (var advert in adverts)
                 {
-                    Advert adv = new Advert(
-                        advert.QuerySelectorAll("h3").First(tag => 
-                            tag.GetAttribute("itemprop") == "name").TextContent,
-                        "https://www.avito.ru/" + advert.QuerySelector("a").GetAttribute("href"),
-                        advert.QuerySelector("strong").TextContent,
-                        advert.QuerySelectorAll("p").First(tag => tag.ClassName == 
+                    var title = advert.QuerySelectorAll("h3").First(tag =>
+                            tag.GetAttribute("itemprop") == "name").TextContent;
+                    var url = "https://www.avito.ru/" + advert.QuerySelector("a").GetAttribute("href");
+                    var price = advert.QuerySelector("strong").TextContent;   
+                    var description = advert.QuerySelectorAll("p").First(tag => tag.ClassName ==
                             "styles-module-root-YczkZ " +
                             "styles-module-size_s-AGMw8 " +
                             "styles-module-size_s_compensated-UgWYW " +
@@ -47,13 +47,23 @@ namespace Parse_Parts.Models.SitesDataModels
                             "stylesMarningNormal-module-paragraph-s-Yhr2e " +
                             "styles-module-noAccent-LowZ8 " +
                             "styles-module-root_bottom-G4JNz " +
-                            "styles-module-margin-bottom_6-_aVZm").TextContent,
-                        advert.QuerySelectorAll("li").First(tag =>
-                        tag.GetAttribute("data-marker").Contains("slider-image/image"))
-                            .GetAttribute("data-marker").Replace("slider-image/image-", "")
-                        )
-                        ;
-                        data.Add(adv);
+                            "styles-module-margin-bottom_6-_aVZm").TextContent;
+                    
+                    string photo = null;
+                    if(advert.QuerySelector("li").GetAttribute("data-marker") != null)
+                        photo=advert.QuerySelectorAll("li").First(tag =>
+                            tag.GetAttribute("data-marker").Contains("slider-image/image"))
+                               .GetAttribute("data-marker").Replace("slider-image/image-", "");
+
+                    Advert adv = new Advert(
+                        title,
+                        url,
+                        price,
+                        description,
+                        photo
+                        );
+                        
+                    data.Add(adv);
 
                 }
                 return data;
