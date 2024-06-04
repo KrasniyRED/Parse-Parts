@@ -7,32 +7,10 @@
         xmlns:vm="clr-namespace:Parse_Parts.ViewModels"
         xmlns:local="clr-namespace:Parse_Parts"
         mc:Ignorable="d"
-        Title="ParseParts" Height="450" Width="800">
+        Title="ParseParts" Height="450" Width="1000">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    <Window.Resources>
-        <DataTemplate x:Key="listItemTemplate">
-            <Grid MaxHeight="150">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*"/>
-                    <ColumnDefinition Width="13*"/>
-                    <ColumnDefinition Width="4*"/>
-                </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" Margin="0,0,0,0" />
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="2*"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Margin="5,10,5,10" Text="{Binding Title}" FontSize="16" TextAlignment="Justify"></TextBlock>
-                    <TextBlock Grid.Row="1" Margin="5,10,5,10" Text="{Binding Description}" FontSize="12" TextAlignment="Justify"></TextBlock>
-                </Grid>
-                <TextBlock Grid.Column="2" Margin="5,10,5,5" TextWrapping="Wrap" Text="{Binding Price}" TextAlignment="Center" FontSize="16" FontWeight="Bold" VerticalAlignment="Top"/>
-
-            </Grid>
-        </DataTemplate>
-    </Window.Resources>
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
@@ -94,13 +72,14 @@
                 <ListView ItemsSource="{Binding Adverts}">
                     <ListView.ItemTemplate>
                         <DataTemplate DataType="model:Advert">
-                            <Grid MaxHeight="150" MaxWidth="550">
+                            <Grid MaxHeight="150" MaxWidth="700">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="5*"/>
                                     <ColumnDefinition Width="13*"/>
                                     <ColumnDefinition Width="4*"/>
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Margin="0,0,0,0" MinWidth="100" Source="{Binding Photo}" />
+
                                 <Grid Grid.Column="1" MinWidth="500">
                                     <Grid.RowDefinitions>
                                         <RowDefinition/>
