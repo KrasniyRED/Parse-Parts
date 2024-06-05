@@ -1,4 +1,5 @@
-﻿using Parse_Parts.Infrastructure.Commands;
+﻿using Microsoft.Data.Sqlite;
+using Parse_Parts.Infrastructure.Commands;
 using Parse_Parts.Infrastructure.Interfaces;
 using Parse_Parts.Models;
 using Parse_Parts.ViewModels.Base;
@@ -15,6 +16,14 @@ namespace Parse_Parts.ViewModels
 {
     internal class MainWindowViewModel : ViewModel
     {
+        #region DbConnection
+
+        SqliteConnection dbConnection = new SqliteConnection("Data Source=partsCatalog.db;Mode=ReadOnly");
+
+        #endregion
+
+        #region AdvertsCollection
+
         private Collection<Advert> _Adverts;
         public Collection<Advert> Adverts
         {
@@ -22,13 +31,40 @@ namespace Parse_Parts.ViewModels
             set => Set(ref _Adverts, value);
         }
 
-        #region SearchField
+        #endregion
+
+        #region OemSearchField
 
         private string _SearchField;
         public string SearchField
         {
             get => _SearchField;
             set => Set(ref _SearchField,value);
+        }
+
+        #endregion
+
+        #region MachineSearchFields
+
+        private List<string> _Brands;
+        public List<string> Brands 
+        {
+            get => _Brands;
+            set => Set(ref _Brands,value);
+        }
+
+        private List<string> _CarModels;
+        public List<string> CarModels
+        {
+            get => _CarModels;
+            set => Set(ref _CarModels, value);
+        }
+
+        private List<string> _PartsNames;
+        public List<string> PartsNames
+        {
+            get => _PartsNames;
+            set => Set(ref _PartsNames, value);
         }
 
         #endregion
