@@ -138,12 +138,41 @@ namespace Parse_Parts.ViewModels
         
         public MainWindowViewModel()
         {
+            #region CatalogImport
+
+            Brands = GetDBData("SELECT Name FROM Brand", 0);
+            CarModels = GetDBData("SELECT Name FROM Model", 0);
+            PartsNames = GetDBData("SELECT Name FROM PartType", 0);
+
+            #endregion
+
             #region  Commands
 
             CloseAppCommand = new MainCommand(onCloseAppCommandExecuted, canCloseAppCommandExecute);
             OemSearchCommand = new MainCommandAsync(onOemSearchCommandExecuted, canOemSearchCommandEcecute);
 
             #endregion
+        }
+
+        private List<string> GetDBData(string SqlText,int column)
+        {
+            var result = new List<string>();
+            
+            dbConnection.Open();
+
+            SqliteCommand command = new SqliteCommand();
+            command.Connection = dbConnection;
+            command.CommandText = SqlText;
+            
+            var data = command.ExecuteReader();
+            
+            while(data.Read())
+            {
+                result.Add(data.GetString(column));
+            }
+
+            dbConnection.Close();
+            return result;
         }
     }
 }
