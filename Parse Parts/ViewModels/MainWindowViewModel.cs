@@ -46,12 +46,25 @@ namespace Parse_Parts.ViewModels
 
         #region MachineSearchFields
 
+        #region Brands
+
         private List<string> _Brands;
         public List<string> Brands 
         {
             get => _Brands;
-            set => Set(ref _Brands,value);
+            set => Set(ref _Brands, value);
         }
+
+        private int _SelectedBrand;
+        public int SelectedBrand
+        {
+            get =>_SelectedBrand;
+            set=> Set(ref _SelectedBrand, value);
+        }
+
+        #endregion
+
+        #region CarModels
 
         private List<string> _CarModels;
         public List<string> CarModels
@@ -60,12 +73,32 @@ namespace Parse_Parts.ViewModels
             set => Set(ref _CarModels, value);
         }
 
+        private int _SelectedCarModel;
+        public int SelectedCarModel
+        {
+            get => _SelectedCarModel;
+            set => Set(ref _SelectedCarModel, value);
+        }
+
+        #endregion
+
+        #region PartsNames
+
         private List<string> _PartsNames;
         public List<string> PartsNames
         {
             get => _PartsNames;
             set => Set(ref _PartsNames, value);
         }
+
+        private int _SelectedPartName;
+        public int SelectedPartName
+        {
+            get => _SelectedPartName;
+            set => Set(ref _SelectedPartName, value);
+        }
+
+        #endregion
 
         #endregion
 
